@@ -1,6 +1,6 @@
 package com.paypay.oa.user.util;
 
-import com.paypay.oa.user.constants.OAOrderManagementResultCode;
+import com.paypay.oa.user.constants.OAUserManagementResultCode;
 import com.paypay.oa.user.controller.response.GenericServerResponse;
 
 import org.springframework.http.HttpStatus;
@@ -12,6 +12,6 @@ public class ResponseUtil {
     }
 
     private static <T> GenericServerResponse<T> genericSuccessResponse(T data) {
-        return new GenericServerResponse(OAOrderManagementResultCode.API_SUCCESS, data);
+        return new GenericServerResponse(OAUserManagementResultCode.API_SUCCESS, data);
     }
 }

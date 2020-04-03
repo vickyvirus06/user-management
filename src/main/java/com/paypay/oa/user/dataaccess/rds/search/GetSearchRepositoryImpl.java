@@ -21,4 +21,9 @@ public class GetSearchRepositoryImpl implements GetSearchRepo {
 		return searchRepository.findByConsumerId(consumerId);
 	}
 
+	@Override
+	public Long countByConsumerId(Long consumerId) {
+		return searchRepository.countByConsumerId(consumerId);
+	}
+
    }

@@ -17,11 +17,21 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class AddSearchServiceImpl implements AddSearchService{
 	private final PersistSearchRepo persistSearchRepo;
+	private final GetSearchRepo getSearchRepo;
 	
 	@Override
-	public SearchTerms createSearch(AddSearchDetailsRequest addSearchDetailsRequest) {
-		persistSearchRepo.add(setSearchEntity(addSearchDetailsRequest));
-		return null;
+	public void createSearch(AddSearchDetailsRequest addSearchDetailsRequest) {
+		
+		Long count = getSearchRepo.countByConsumerId(addSearchDetailsRequest.getConsumerId());
+		if(count>=5)
+		{
+			persistSearchRepo.delete(addSearchDetailsRequest.getConsumerId());
+			persistSearchRepo.add(setSearchEntity(addSearchDetailsRequest));
+		}
+		else
+		{
+			persistSearchRepo.add(setSearchEntity(addSearchDetailsRequest));
+		}
 	}
 	
 	

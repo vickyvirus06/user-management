@@ -9,6 +9,11 @@ public interface PersistSearchRepo {
 	 * @param searchTerms
 	 * @return
 	 */
-	SearchTerms add(SearchTerms searchTerms);
+	void add(SearchTerms searchTerms);
 	
+	/**
+	 * 
+	 * @param consumerId
+	 */
+	void delete(Long consumerId);
 }

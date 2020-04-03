@@ -12,6 +12,6 @@ public interface AddSearchService {
 	 * @param addSearchDetailsRequest
 	 * @return
 	 */
-	SearchTerms createSearch(AddSearchDetailsRequest addSearchDetailsRequest);
+	void createSearch(AddSearchDetailsRequest addSearchDetailsRequest);
 
 }

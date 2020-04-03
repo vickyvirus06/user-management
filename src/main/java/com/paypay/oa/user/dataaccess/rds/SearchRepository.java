@@ -17,4 +17,18 @@ public interface SearchRepository extends JpaRepository<SearchTerms, Long> {
 	 * @return
 	 */
 	List<SearchTerms> findByConsumerId(Long consumerId);
+	
+	/**
+	 * 
+	 * @param consumerId
+	 * @return
+	 */
+	Long countByConsumerId(Long consumerId);
+	
+	/**
+	 * 
+	 * @param consumerId
+	 * @return
+	 */
+	List<SearchTerms> deleteByConsumerId(Long consumerId);
 }

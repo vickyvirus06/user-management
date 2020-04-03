@@ -12,4 +12,6 @@ public interface GetSearchService {
 	 * @return
 	 */
 	List<SearchTerms> getSearchHistory(Long consumerId);
+	
+	
 }

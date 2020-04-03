@@ -15,9 +15,15 @@ public class AddSearchRepositoryImpl implements PersistSearchRepo {
 	private final SearchRepository searchRepository;
 	
 	@Override
-	public SearchTerms add(SearchTerms searchTerms) {
+	public void add(SearchTerms searchTerms) {
 		searchRepository.save(searchTerms);
-		return null;
+		
+	}
+
+	@Override
+	public void delete(Long consumerId) {
+		searchRepository.deleteByConsumerId(consumerId);
+		
 	}
 
 }

@@ -18,7 +18,6 @@ public class GetSearchHistoryServiceImpl implements GetSearchService {
 
 	@Override
 	public List<SearchTerms> getSearchHistory(Long consumerId) {
-		// TODO Auto-generated method stub
 		return getSearchRepo.findByConsumerId(consumerId);
 	}
 

@@ -11,5 +11,12 @@ public interface GetSearchRepo {
 	 * @return
 	 */
 	List<SearchTerms> findByConsumerId(Long consumerId);
+	
+	/**
+	 * 
+	 * @param consumerId
+	 * @return
+	 */
+	Long countByConsumerId(Long consumerId);
 
 }

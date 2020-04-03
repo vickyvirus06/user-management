@@ -17,22 +17,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class GetSearchHistoryResponse {
     private List<String> searchHistory;
-    
-    @Data
-    @Builder
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class GetSearchResponse
-    {
-    	private String searchQuery;
-    }
 
-    public static GetSearchHistoryResponse buildGetOrderHistoryResponse(List<SearchTerms> searchList) {
+    public static GetSearchHistoryResponse buildGetSearchHistoryResponse(List<SearchTerms> searchList) {
         List<String> searchHistoryList = searchList.stream().map(search ->
-                
-                        (search.getSearchQuery())
-                        
-        ).collect(Collectors.toList());
+                (search.getSearchQuery())
+                 ).collect(Collectors.toList());
         return GetSearchHistoryResponse.builder().searchHistory(searchHistoryList).build();
     }
 }

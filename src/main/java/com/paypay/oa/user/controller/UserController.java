@@ -24,37 +24,51 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @Validated
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-@Api(tags = "Order")
+@Api(tags = "User")
 public class UserController {
-    private final UserApplication orderApplication;
+    private final UserApplication userApplication;
 
+    /**
+     * 
+     * @param addSearchDetailsRequest
+     * @param consumerId
+     * @return
+     */
     @PostMapping(
             value = "/v1/userManagement/addSearchQuery/consumer/{consumerId}",
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(
             value = "Add an search query",
             notes = "Add an search query based on consumer id.")
-    public ResponseEntity<GenericServerResponse> addOrder(
+    public ResponseEntity<GenericServerResponse> addSearch(
             @RequestBody @Valid AddSearchDetailsRequest addSearchDetailsRequest,
             @PathVariable("consumerId") Long consumerId) {
-        return ResponseUtil.getSuccessResponse(orderApplication.addSearch(addSearchDetailsRequest, consumerId));
+        userApplication.addSearch(addSearchDetailsRequest, consumerId);
+        return ResponseUtil.getSuccessResponse(null);
     }
     
     /**
-     * Add order and its items
-     *
-     * @param addOrderDetailsRequest
+     * 
      * @param consumerId
-     * @return ResponseEntity<GenericServerResponse>
+     * @return
      */
-
     @GetMapping(value = "/v1/userManagement/searchHistory/consumer/{consumerId}", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ApiOperation(value = "Get order list for a store.", notes = "Get order list for a store.")
-    public ResponseEntity<GenericServerResponse> getOrderList(
+    @ApiOperation(value = "Get search list for a consumer.", notes = "Get search list for a consumer.")
+    public ResponseEntity<GenericServerResponse> getSearchList(
             @PathVariable Long consumerId) {
-        return ResponseUtil.getSuccessResponse(orderApplication.getSearchHistory(consumerId));
+        return ResponseUtil.getSuccessResponse(userApplication.getSearchHistory(consumerId));
     }
     
-    
-    
+    /**
+     * 
+     * @param consumerId
+     * @return
+     */
+    @GetMapping(value = "/v1/userManagement/consumer/searchTags", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation(value = "Get tags list depending on time.", notes = "Get tag list for a time.")
+    public ResponseEntity<GenericServerResponse> getTagList() {
+        return ResponseUtil.getSuccessResponse(userApplication.getSearchTags());
+    }
+
+
 }

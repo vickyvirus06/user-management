@@ -10,4 +10,5 @@ out/
 node_modules/
 dump.rdb
 nohup.out
+bin
 */.gitkeep
